@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://orcatech.netlify.app/sitemap.xml
