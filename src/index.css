@@ -1,0 +1,5 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Use classes in HTML instead of @apply in CSS to avoid the build-time @apply error */
