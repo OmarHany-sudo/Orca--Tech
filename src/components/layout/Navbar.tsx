@@ -40,8 +40,14 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-orca-blue">
-          ORCATECH
+
+        {/* Logo */}
+        <Link href="/" className="flex items-center">
+          <img
+            src={isScrolled ? '/logo2.jpg' : '/logo.jpg'}
+            alt="OrcaTech Logo"
+            className="h-10 w-auto transition-all duration-300"
+          />
         </Link>
 
         {/* Desktop Nav */}
@@ -78,9 +84,9 @@ export default function Navbar() {
           )}
         </nav>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button (Always Black) */}
         <button
-          className="md:hidden text-gray-700"
+          className="md:hidden text-black transition-all duration-300"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           <svg
