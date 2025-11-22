@@ -12,12 +12,22 @@ const posts = [
   {
     title: 'How Hackers Attack Websites (Explained Simply)',
     slug: 'how-hackers-attack-websites',
-    desc: 'A simplified guide explaining real-world hacking techniques and how to defend against them.',
+    desc: 'A simplified explanation of real-world hacking techniques and how to defend your website against them.',
   },
   {
     title: 'Why Backend Architecture Matters for Your Business',
     slug: 'importance-of-backend',
-    desc: 'Discover how backend systems impact performance, scalability, and user experience.',
+    desc: 'Discover how backend systems impact performance, scalability, security, and user experience.',
+  },
+  {
+    title: 'The Importance of Web Performance Optimization',
+    slug: 'web-performance-optimization',
+    desc: 'Understand why website speed, caching, optimization, and performance tuning directly affect conversions and SEO.',
+  },
+  {
+    title: 'What Is Penetration Testing? A Complete Beginner’s Guide',
+    slug: 'penetration-testing-guide',
+    desc: 'A beginner-friendly explanation of penetration testing, methodology, tools, and why every business needs it.',
   },
 ];
 
@@ -25,7 +35,7 @@ export default function BlogPage() {
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        
+
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900">
             OrcaTech Blog
@@ -59,6 +69,7 @@ export default function BlogPage() {
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );
