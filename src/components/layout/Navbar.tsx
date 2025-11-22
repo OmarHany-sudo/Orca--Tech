@@ -44,7 +44,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <img
-            src={isScrolled ? '/logo.jpg' : '/logo.jpg'}
+            src={isScrolled ? '/logo.jpg' : '/logo2.jpg'}
             alt="OrcaTech Logo"
             className="h-10 w-auto transition-all duration-300"
           />
