@@ -1,24 +1,39 @@
-import { MetadataRoute } from 'next';
+import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://orcatech.netlify.app";
-
-  // Static Routes
   const routes = [
-    "",
-    "/services/web-development",
-    "/services/cybersecurity",
-    "/services/backend",
-    "/services/desktop-apps",
-    "/blog",
-  ].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date().toISOString(),
-    changeFrequency: "daily",
-    priority: route === "" ? 1.0 : 0.9,
-  }));
+    {
+      url: "https://orcatech.netlify.app/",
+      lastModified: "2025-02-21",
+      changeFrequency: "daily" as const,
+      priority: 1.0,
+    },
+    {
+      url: "https://orcatech.netlify.app/services/web-development",
+      lastModified: "2025-02-21",
+      changeFrequency: "weekly" as const,
+      priority: 0.95,
+    },
+    {
+      url: "https://orcatech.netlify.app/services/cybersecurity",
+      lastModified: "2025-02-21",
+      changeFrequency: "weekly" as const,
+      priority: 0.95,
+    },
+    {
+      url: "https://orcatech.netlify.app/services/backend",
+      lastModified: "2025-02-21",
+      changeFrequency: "weekly" as const,
+      priority: 0.90,
+    },
+    {
+      url: "https://orcatech.netlify.app/services/Desktop-apps",
+      lastModified: "2025-02-21",
+      changeFrequency: "weekly" as const,
+      priority: 0.90,
+    },
+  ];
 
-  // Blog Articles (dynamically added)
   const blogArticles = [
     "website-cybersecurity-tips",
     "how-hackers-attack-websites",
@@ -26,10 +41,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "web-performance-optimization",
     "penetration-testing-guide",
   ].map((slug) => ({
-    url: `${baseUrl}/blog/${slug}`,
-    lastModified: new Date().toISOString(),
-    changeFrequency: "weekly",
-    priority: 0.85,
+    url: `https://orcatech.netlify.app/blog/${slug}`,
+    lastModified: "2025-02-21",
+    changeFrequency: "weekly" as const,
+    priority: 0.80,
   }));
 
   return [...routes, ...blogArticles];
