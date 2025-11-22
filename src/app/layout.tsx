@@ -1,15 +1,15 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
+import "./globals.css";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "OrcaTech | Web Development & Cybersecurity Services",
   description:
-    "OrcaTech provides professional web development, backend systems, penetration testing, and full cybersecurity services in Egypt and the Middle East.",
+    "OrcaTech provides professional web development, backend systems, penetration testing, and advanced cybersecurity services tailored for businesses.",
   keywords: [
     "OrcaTech",
     "Web development company",
@@ -19,16 +19,22 @@ export const metadata = {
     "Backend development",
     "Security audit",
     "Ethical hacking",
-    "Vulnerability scanning"
+    "Vulnerability scanning",
+    "Cybersecurity Egypt",
+    "Web design Egypt",
+    "WordPress security",
+    "Pentesting services",
+    "Secure web apps"
   ],
   robots: "index, follow",
   alternates: {
     canonical: "https://orcatech.netlify.app/",
   },
+
   openGraph: {
     title: "OrcaTech | Web Development & Cybersecurity",
     description:
-      "Professional web development, penetration testing, vulnerability scanning, and backend systems.",
+      "Professional web development, web security, vulnerability scanning, penetration testing, and backend systems.",
     url: "https://orcatech.netlify.app/",
     siteName: "OrcaTech",
     images: [
@@ -36,11 +42,23 @@ export const metadata = {
         url: "https://orcatech.netlify.app/og-image.png",
         width: 1200,
         height: 630,
-        alt: "OrcaTech Website Preview",
+        alt: "OrcaTech Services Overview",
       },
     ],
     locale: "en_US",
     type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "OrcaTech | Web Development & Cybersecurity",
+    description:
+      "Web development, backend systems, penetration testing, and full cybersecurity services.",
+    images: ["https://orcatech.netlify.app/og-image.png"],
+  },
+
+  icons: {
+    icon: "/favicon.ico",
   },
 };
 
@@ -51,6 +69,36 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* JSON-LD Schema (SEO BOOST) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "OrcaTech",
+              url: "https://orcatech.netlify.app",
+              logo: "https://orcatech.netlify.app/logo.png",
+              description:
+                "Web development, backend development, penetration testing, and cybersecurity services.",
+              sameAs: [
+                "https://www.facebook.com/profile.php?id=61583719363965",
+                "https://github.com/OmarHany-sudo",
+              ],
+              contactPoint: [
+                {
+                  "@type": "ContactPoint",
+                  telephone: "+201030634710",
+                  contactType: "customer service",
+                  email: "orcatech.service@gmail.com",
+                },
+              ],
+            }),
+          }}
+        />
+      </head>
+
       <body className={inter.className}>
         <Navbar />
         {children}
