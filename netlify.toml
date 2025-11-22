@@ -4,12 +4,3 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-
-# Run Utils plugin (to run commands after build)
-[[plugins]]
-  package = "@netlify/plugin-run-utils"
-
-  [plugins.inputs]
-    postBuildCommands = [
-      "curl -X GET https://orcatech.netlify.app/.netlify/functions/ping-search-engines"
-    ]
