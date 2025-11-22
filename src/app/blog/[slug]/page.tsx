@@ -42,16 +42,14 @@ const articles: any = {
     `,
   },
 
-  /* -----------------------------------------------------
-     ARTICLE 2
-  ----------------------------------------------------- */
+  /* ARTICLE 2 */
   'how-hackers-attack-websites': {
     title: 'How Hackers Attack Websites (Explained Simply)',
     content: `
 <h2>1) SQL Injection</h2>
 <p>Hackers inject SQL queries...</p>
 
-<h2>2) Cross-Site Scripting (XSS)</h2>
+<h2>2) Cross-Site Scripting</h2>
 <p>Inject malicious JavaScript...</p>
 
 <h2>3) Brute Force Attacks</h2>
@@ -60,20 +58,18 @@ const articles: any = {
 <h2>4) File Upload Exploits</h2>
 <p>Attackers upload shells...</p>
 
-<h2>5) Cross-Site Request Forgery (CSRF)</h2>
-<p>Forces users to perform actions...</p>
+<h2>5) Cross-Site Request Forgery</h2>
+<p>Forcing users to perform actions...</p>
 
 <h2>6) DDoS Attacks</h2>
-<p>Flood server with traffic...</p>
+<p>Flooding server with traffic...</p>
 
 <h2>Conclusion</h2>
 <p>Understanding attacks helps defend...</p>
     `,
   },
 
-  /* -----------------------------------------------------
-     ARTICLE 3
-  ----------------------------------------------------- */
+  /* ARTICLE 3 */
   'importance-of-backend': {
     title: 'Why Backend Architecture Matters for Your Business',
     content: `
@@ -87,7 +83,7 @@ const articles: any = {
 <p>Protects sensitive data...</p>
 
 <h2>4) Maintainability</h2>
-<p>Clean code improves development...</p>
+<p>Clean architecture helps devs...</p>
 
 <h2>5) Business Stability</h2>
 <p>Reliable backend = reliable business...</p>
@@ -97,9 +93,7 @@ const articles: any = {
     `,
   },
 
-  /* -----------------------------------------------------
-     ARTICLE 4
-  ----------------------------------------------------- */
+  /* ARTICLE 4 */
   'web-performance-optimization': {
     title: 'The Importance of Web Performance Optimization',
     content: `
@@ -107,25 +101,23 @@ const articles: any = {
 <p>Every second reduces conversions...</p>
 
 <h2>2) Google Ranking Depends on Speed</h2>
-<p>Core Web Vitals are important...</p>
+<p>Core Web Vitals matter...</p>
 
 <h2>3) Optimized Images</h2>
-<p>Use WebP, compression, lazy-load...</p>
+<p>Use WebP, lazy-load...</p>
 
-<h2>4) Caching for Instant Loads</h2>
-<p>CDN, server caching...</p>
+<h2>4) Caching</h2>
+<p>CDN + browser caching...</p>
 
-<h2>5) Minification & Bundling</h2>
-<p>Minify CSS/JS...</p>
+<h2>5) Minification</h2>
+<p>Minify and bundle files...</p>
 
 <h2>Conclusion</h2>
-<p>Performance = SEO + UX + profits...</p>
+<p>Performance = SEO + UX...</p>
     `,
   },
 
-  /* -----------------------------------------------------
-     ARTICLE 5
-  ----------------------------------------------------- */
+  /* ARTICLE 5 */
   'penetration-testing-guide': {
     title: 'What Is Penetration Testing? A Complete Beginner’s Guide',
     content: `
@@ -133,11 +125,11 @@ const articles: any = {
 <p>A simulated cyberattack...</p>
 
 <h2>2) Importance</h2>
-<p>Identifies weaknesses...</p>
+<p>Finds weaknesses...</p>
 
 <h2>3) Types of Pentesting</h2>
 <ul>
-<li>Web apps</li>
+<li>Web Apps</li>
 <li>Network</li>
 <li>API</li>
 <li>Wireless</li>
@@ -149,7 +141,7 @@ const articles: any = {
 
 <h2>5) Tools</h2>
 <ul>
-<li>Burp Suite</li>
+<li>Burp</li>
 <li>Nmap</li>
 <li>Metasploit</li>
 <li>ZAP</li>
@@ -157,7 +149,7 @@ const articles: any = {
 </ul>
 
 <h2>Conclusion</h2>
-<p>Essential for modern security...</p>
+<p>Critical for modern security...</p>
     `,
   },
 };
@@ -167,16 +159,13 @@ export default function BlogArticle({ params }: any) {
 
   if (!article) return notFound();
 
-  const jsonLd = {
+  const jsonLdArticle = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: article.title,
     datePublished: "2025-02-21",
     dateModified: "2025-02-21",
-    author: {
-      "@type": "Organization",
-      name: "OrcaTech",
-    },
+    author: { "@type": "Organization", name: "OrcaTech" },
     publisher: {
       "@type": "Organization",
       name: "OrcaTech",
@@ -185,6 +174,16 @@ export default function BlogArticle({ params }: any) {
         url: "https://orcatech.netlify.app/og-image.png",
       },
     },
+  };
+
+  const jsonLdBreadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://orcatech.netlify.app" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://orcatech.netlify.app/blog" },
+      { "@type": "ListItem", position: 3, name: article.title, item: `https://orcatech.netlify.app/blog/${params.slug}` }
+    ]
   };
 
   return (
@@ -196,10 +195,11 @@ export default function BlogArticle({ params }: any) {
         </h1>
 
         <>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-          />
+          {/* Article Schema */}
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdArticle) }} />
+
+          {/* Breadcrumb Schema */}
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }} />
         </>
 
         <article
