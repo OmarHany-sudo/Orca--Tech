@@ -12,42 +12,27 @@ export default function Home() {
   return (
     <main>
 
-      {/* 🔥 Primary SEO Header (H1) */}
+      {/* 🔥 Primary SEO Header (Hidden from users) */}
       <h1 className="sr-only">
         OrcaTech – Professional Web Development, Backend Systems & Cybersecurity Services
       </h1>
 
-      {/* 🔥 SEO Intro Paragraph */}
-      <section className="px-6 pt-4 pb-2 max-w-4xl mx-auto text-center text-gray-700 leading-relaxed">
+      {/* 🔥 SEO Intro Paragraph (Hidden from users) */}
+      <section className="sr-only">
         <p>
           OrcaTech is a professional web development and cybersecurity company
           delivering high-performance business websites, backend systems,
-          penetration testing, vulnerability scanning, and full website
-          security services across Egypt and the Middle East. We help businesses
-          build fast, secure, SEO-optimized digital platforms.
+          penetration testing, vulnerability scanning, and full website security
+          services across Egypt and the Middle East.
         </p>
 
-        {/* 🔗 Internal linking for Google SEO */}
-        <p className="mt-3 text-sm">
-          Learn more about our{" "}
-          <a
-            href="/services/web-development"
-            className="text-orca-blue underline"
-          >
-            web development services
-          </a>{" "}
-          or explore our{" "}
-          <a
-            href="/services/cybersecurity"
-            className="text-orca-blue underline"
-          >
-            cybersecurity and pentesting solutions
-          </a>
-          .
+        <p>
+          Learn more about our web development services or explore our cybersecurity
+          and pentesting solutions.
         </p>
       </section>
 
-      {/* Hero Section */}
+      {/* Actual displayed sections */}
       <Hero />
 
       <AnimatedSection>
@@ -69,6 +54,7 @@ export default function Home() {
       <AnimatedSection>
         <ContactSection />
       </AnimatedSection>
+
     </main>
   );
 }
