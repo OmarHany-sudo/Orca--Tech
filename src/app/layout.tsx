@@ -70,7 +70,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* JSON-LD Schema (SEO BOOST) */}
+        {/* ================================
+            ORGANIZATION SCHEMA
+        ================================= */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -79,22 +81,43 @@ export default function RootLayout({
               "@type": "Organization",
               name: "OrcaTech",
               url: "https://orcatech.netlify.app",
-              logo: "https://orcatech.netlify.app/logo.png",
+              logo: "https://orcatech.netlify.app/og-image.png",
               description:
                 "Web development, backend development, penetration testing, and cybersecurity services.",
               sameAs: [
                 "https://www.facebook.com/profile.php?id=61583719363965",
-                "https://github.com/OmarHany-sudo",
+                "https://github.com/OmarHany-sudo"
               ],
               contactPoint: [
                 {
                   "@type": "ContactPoint",
                   telephone: "+201030634710",
                   contactType: "customer service",
-                  email: "orcatech.service@gmail.com",
-                },
-              ],
-            }),
+                  email: "orcatech.service@gmail.com"
+                }
+              ]
+            })
+          }}
+        />
+
+        {/* ================================
+            WEBSITE + SEARCH ACTION
+        ================================= */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "OrcaTech",
+              url: "https://orcatech.netlify.app",
+              potentialAction: {
+                "@type": "SearchAction",
+                target:
+                  "https://orcatech.netlify.app/search?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+            })
           }}
         />
       </head>
