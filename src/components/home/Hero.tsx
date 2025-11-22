@@ -6,8 +6,8 @@ import { Button } from '@/components/ui/Button';
 export default function Hero() {
   return (
     <section
-      id="hero"
-      className="relative min-h-screen flex items-center bg-gradient-to-br from-orca-blue to-black overflow-hidden"
+  id="hero"
+  className="relative min-h-screen flex items-center bg-gradient-to-r from-black to-orca-blue overflow-hidden"
       aria-label="OrcaTech Web Development and Cybersecurity Services"
     >
       <div className="absolute inset-0 circuit-bg opacity-10"></div>
