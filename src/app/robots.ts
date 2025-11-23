@@ -4,11 +4,13 @@ export default function robots(): MetadataRoute.Robots {
   const baseUrl = "https://orcatech.netlify.app";
 
   return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-      disallow: "",
-    },
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+      }
+    ],
     sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
   };
 }
