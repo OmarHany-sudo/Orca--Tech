@@ -57,8 +57,13 @@ export const metadata: Metadata = {
     images: ["https://orcatech.netlify.app/og-image.png"],
   },
 
+  // ===========================
+  // UPDATED FAVICON SETTINGS
+  // ===========================
   icons: {
-    icon: "/favicon.ico",
+    icon: "/OrcaTech.ico",
+    shortcut: "/OrcaTech.ico",
+    apple: "/OrcaTech.ico",
   },
 };
 
