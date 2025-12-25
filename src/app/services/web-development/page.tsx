@@ -38,12 +38,12 @@ export default function WebDevPage() {
       >
         <div className="container mx-auto px-4 text-center">
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
-          >
-            Web Development Services
-          </motion.h1>
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+>
+  OrcaTech Web Development Services
+</motion.h1>
 
           <motion.div
             initial={{ width: 0 }}
