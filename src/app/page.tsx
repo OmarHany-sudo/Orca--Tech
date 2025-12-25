@@ -12,28 +12,17 @@ export default function Home() {
   return (
     <main>
 
-      {/* 🔥 Primary SEO Header (Hidden from users) */}
-      <h1 className="sr-only">
-        OrcaTech – Professional Web Development, Backend Systems & Cybersecurity Services
-      </h1>
+      {/* ✅ HERO = Real SEO H1 (same design) */}
+      <Hero />
 
-      {/* 🔥 SEO Intro Paragraph (Hidden from users) */}
-      <section className="sr-only">
+      {/* ✅ Visible SEO intro – بنفس شكل الموقع */}
+      <section className="max-w-3xl mx-auto mt-8 px-4 text-center text-muted-foreground">
         <p>
-          OrcaTech is a professional web development and cybersecurity company
-          delivering high-performance business websites, backend systems,
-          penetration testing, vulnerability scanning, and full website security
-          services across Egypt and the Middle East.
-        </p>
-
-        <p>
-          Learn more about our web development services or explore our cybersecurity
-          and pentesting solutions.
+          <strong>OrcaTech</strong> is a professional web development and cybersecurity
+          company delivering secure, high-performance websites, backend systems,
+          and penetration testing services for businesses in Egypt and worldwide.
         </p>
       </section>
-
-      {/* Actual displayed sections */}
-      <Hero />
 
       <AnimatedSection>
         <WhyChooseUs />
