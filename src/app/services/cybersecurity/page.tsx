@@ -40,12 +40,12 @@ export default function CybersecurityPage() {
           
           {/* SEO Title */}
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-bold mb-6"
-          >
-            Cybersecurity Services & Penetration Testing
-          </motion.h1>
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  className="text-4xl md:text-5xl font-bold mb-6"
+>
+  OrcaTech Cybersecurity Services & Penetration Testing
+</motion.h1>
 
           <motion.div
             initial={{ width: 0 }}
