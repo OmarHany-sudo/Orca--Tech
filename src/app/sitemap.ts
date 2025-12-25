@@ -27,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.90,
     },
     {
-      url: "https://orcatech.netlify.app/services/Desktop-apps",
+      url: "https://orcatech.netlify.app/services/desktop-apps",
       lastModified: "2025-02-21",
       changeFrequency: "weekly" as const,
       priority: 0.90,
