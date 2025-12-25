@@ -27,9 +27,9 @@ export default function Hero() {
         >
 
           {/* 🔥 H2 SEO — مهم جدًا */}
-          <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
-            Professional Web Development & Cybersecurity Solutions
-          </h2>
+          <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+  OrcaTech – Professional Web Development & Cybersecurity Solutions
+</h1>
 
           {/* 🔥 SEO PARAGRAPH */}
           <p className="text-xl text-gray-200 mb-8 leading-relaxed">
