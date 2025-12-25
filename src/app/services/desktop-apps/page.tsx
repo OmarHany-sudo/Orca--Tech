@@ -35,12 +35,12 @@ export default function DesktopAppsPage() {
 
           {/* SEO H1 */}
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
-          >
-            Desktop Application Development
-          </motion.h1>
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+>
+  OrcaTech Desktop Application Development
+</motion.h1>
 
           <motion.div
             initial={{ width: 0 }}
