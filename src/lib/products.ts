@@ -15,7 +15,7 @@ export interface Product {
   description: string;
 }
 
-export const WHATSAPP_NUMBER = "+201234567890"; // رقم واتساب ثابت للتواصل
+export const WHATSAPP_NUMBER = "+201030634710"; // رقم واتساب ثابت للتواصل
 
 export const products: Product[] = [
   {
