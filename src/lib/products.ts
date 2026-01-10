@@ -15,42 +15,42 @@ export interface Product {
   description: string;
 }
 
-export const WHATSAPP_NUMBER = "+201234567890"; // سيتم استخدام هذا الرقم كمتغير ثابت
+export const WHATSAPP_NUMBER = "+201234567890"; // رقم واتساب ثابت للتواصل
 
 export const products: Product[] = [
   {
     id: "1",
-    name: "E-Commerce Pro",
-    category: "Web System",
-    pricingType: "One-time",
-    description: "A comprehensive e-commerce solution with advanced inventory management and secure payment integration."
+    name: "Smart WhatsApp AI Reply",
+    category: "SaaS & Subscription",
+    pricingType: "Subscription",
+    description: "AI-powered WhatsApp auto-reply system that responds instantly to customer messages, understands intent, and improves sales and customer support efficiency."
   },
   {
     id: "2",
-    name: "HealthTrack Mobile",
-    category: "Mobile Application",
-    pricingType: "Subscription",
-    description: "Personal health monitoring app with real-time data tracking and professional medical insights."
+    name: "Restaurant Order Manager",
+    category: "Web System",
+    pricingType: "One-time",
+    description: "Web-based system for managing restaurant orders, menus, and customer requests with real-time updates."
   },
   {
     id: "3",
-    name: "Inventory Master",
-    category: "Desktop Application",
-    pricingType: "One-time",
-    description: "Powerful desktop software for managing large-scale warehouse operations and supply chain logistics."
+    name: "Clinic Appointment App",
+    category: "Mobile Application",
+    pricingType: "Subscription",
+    description: "Mobile app for booking medical appointments, managing schedules, and sending reminders to patients."
   },
   {
     id: "4",
-    name: "EduPortal",
-    category: "Ready-made Solution",
+    name: "Retail POS Desktop",
+    category: "Desktop Application",
     pricingType: "One-time",
-    description: "A ready-to-deploy educational platform for schools and universities to manage online learning."
+    description: "Point of Sale desktop application for retail stores with sales tracking, invoices, and daily reports."
   },
   {
     id: "5",
-    name: "CloudSaaS CRM",
-    category: "SaaS & Subscription",
-    pricingType: "Subscription",
-    description: "Scalable customer relationship management system hosted on the cloud for modern businesses."
+    name: "Company Profile Website Kit",
+    category: "Ready-made Solution",
+    pricingType: "One-time",
+    description: "Ready-to-use professional company website template with contact forms, services section, and WhatsApp integration."
   }
 ];
