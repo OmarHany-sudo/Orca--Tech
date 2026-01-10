@@ -4,6 +4,7 @@ import Hero from "@/components/home/Hero";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import ServicesGrid from "@/components/home/ServicesGrid";
 import Portfolio from "@/components/home/Portfolio";
+import ProductsSection from "@/components/home/ProductsSection";
 import Testimonials from "@/components/home/Testimonials";
 import ContactSection from "@/components/home/ContactSection";
 import AnimatedSection from "@/components/ui/AnimatedSection";
@@ -34,6 +35,10 @@ export default function Home() {
 
       <AnimatedSection>
         <Portfolio />
+      </AnimatedSection>
+
+      <AnimatedSection>
+        <ProductsSection />
       </AnimatedSection>
 
       <AnimatedSection>
