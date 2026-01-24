@@ -1,5 +1,14 @@
 import { NextResponse } from "next/server";
 
+function escapeXml(str: string) {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
 export async function GET() {
   const baseUrl = "https://orcatech.online";
 
@@ -22,35 +31,37 @@ export async function GET() {
     },
     {
       slug: "penetration-testing-guide",
-      title: "What Is Penetration Testing? A Complete Beginner’s Guide",
+      title: "What Is Penetration Testing? A Complete Beginner's Guide",
     },
   ];
 
   const items = posts
     .map(
       (post) => `
-    <item>
-      <title>${post.title}</title>
-      <link>${baseUrl}/blog/${post.slug}</link>
-    </item>
-  `
+        <item>
+          <title>${escapeXml(post.title)}</title>
+          <link>${baseUrl}/blog/${post.slug}</link>
+          <guid>${baseUrl}/blog/${post.slug}</guid>
+        </item>
+      `
     )
     .join("");
 
-  const xml = `
-  <rss version="2.0">
-    <channel>
-      <title>OrcaTech Blog</title>
-      <link>${baseUrl}</link>
-      <description>Cybersecurity & Web Development insights.</description>
-      ${items}
-    </channel>
-  </rss>
-`;
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>OrcaTech Blog</title>
+    <link>${baseUrl}</link>
+    <description>${escapeXml(
+      "Cybersecurity & Web Development insights."
+    )}</description>
+    ${items}
+  </channel>
+</rss>`;
 
   return new NextResponse(xml, {
     headers: {
-      "Content-Type": "application/xml",
+      "Content-Type": "application/rss+xml; charset=UTF-8",
     },
   });
 }
