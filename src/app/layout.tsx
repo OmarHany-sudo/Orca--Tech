@@ -27,19 +27,20 @@ export const metadata: Metadata = {
     "Secure web apps"
   ],
   robots: "index, follow",
+
   alternates: {
-    canonical: "https://orcatech.netlify.app/",
+    canonical: "https://orcatech.online/",
   },
 
   openGraph: {
     title: "OrcaTech | Web Development & Cybersecurity",
     description:
       "Professional web development, web security, vulnerability scanning, penetration testing, and backend systems.",
-    url: "https://orcatech.netlify.app/",
+    url: "https://orcatech.online/",
     siteName: "OrcaTech",
     images: [
       {
-        url: "https://orcatech.netlify.app/og-image.png",
+        url: "https://orcatech.online/og-image.png",
         width: 1200,
         height: 630,
         alt: "OrcaTech Services Overview",
@@ -54,12 +55,9 @@ export const metadata: Metadata = {
     title: "OrcaTech | Web Development & Cybersecurity",
     description:
       "Web development, backend systems, penetration testing, and full cybersecurity services.",
-    images: ["https://orcatech.netlify.app/og-image.png"],
+    images: ["https://orcatech.online/og-image.png"],
   },
 
-  // ===========================
-  // UPDATED FAVICON SETTINGS
-  // ===========================
   icons: {
     icon: "/OrcaTech.ico",
     shortcut: "/OrcaTech.ico",
@@ -85,8 +83,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "OrcaTech",
-              url: "https://orcatech.netlify.app",
-              logo: "https://orcatech.netlify.app/og-image.png",
+              url: "https://orcatech.online",
+              logo: "https://orcatech.online/og-image.png",
               description:
                 "Web development, backend development, penetration testing, and cybersecurity services.",
               sameAs: [
@@ -115,11 +113,11 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "OrcaTech",
-              url: "https://orcatech.netlify.app",
+              url: "https://orcatech.online",
               potentialAction: {
                 "@type": "SearchAction",
                 target:
-                  "https://orcatech.netlify.app/search?q={search_term_string}",
+                  "https://orcatech.online/search?q={search_term_string}",
                 "query-input": "required name=search_term_string",
               },
             })
