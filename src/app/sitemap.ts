@@ -3,31 +3,31 @@ import { MetadataRoute } from "next";
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     {
-      url: "https://orcatech.netlify.app/",
+      url: "https://orcatech.online/",
       lastModified: "2025-02-21",
       changeFrequency: "daily" as const,
       priority: 1.0,
     },
     {
-      url: "https://orcatech.netlify.app/services/web-development",
+      url: "https://orcatech.online/services/web-development",
       lastModified: "2025-02-21",
       changeFrequency: "weekly" as const,
       priority: 0.95,
     },
     {
-      url: "https://orcatech.netlify.app/services/cybersecurity",
+      url: "https://orcatech.online/services/cybersecurity",
       lastModified: "2025-02-21",
       changeFrequency: "weekly" as const,
       priority: 0.95,
     },
     {
-      url: "https://orcatech.netlify.app/services/backend",
+      url: "https://orcatech.online/services/backend",
       lastModified: "2025-02-21",
       changeFrequency: "weekly" as const,
       priority: 0.90,
     },
     {
-      url: "https://orcatech.netlify.app/services/desktop-apps",
+      url: "https://orcatech.online/services/desktop-apps",
       lastModified: "2025-02-21",
       changeFrequency: "weekly" as const,
       priority: 0.90,
@@ -41,7 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "web-performance-optimization",
     "penetration-testing-guide",
   ].map((slug) => ({
-    url: `https://orcatech.netlify.app/blog/${slug}`,
+    url: `https://orcatech.online/blog/${slug}`,
     lastModified: "2025-02-21",
     changeFrequency: "weekly" as const,
     priority: 0.80,
