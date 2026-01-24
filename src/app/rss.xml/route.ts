@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const baseUrl = "https://orcatech.netlify.app";
+  const baseUrl = "https://orcatech.online";
 
   const posts = [
     {
