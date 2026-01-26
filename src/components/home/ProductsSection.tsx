@@ -1,6 +1,5 @@
 import React from 'react';
 import { products } from '@/lib/products';
-import ProductCard from './ProductCard';
 
 export default function ProductsSection() {
   return (
