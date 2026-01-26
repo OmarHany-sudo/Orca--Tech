@@ -1,5 +1,4 @@
 import React from 'react';
-import { products } from '@/lib/products';
 
 export default function ProductsSection() {
   return (
@@ -14,11 +13,9 @@ export default function ProductsSection() {
             Explore our range of high-quality digital solutions designed to empower your business and streamline your operations.
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+
+        <div className="text-center text-gray-500 text-lg">
+          Products will be available soon.
         </div>
       </div>
     </section>
