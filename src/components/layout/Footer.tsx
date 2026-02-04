@@ -21,10 +21,10 @@ export default function Footer() {
               </p>
               <p>
                 <Link
-                  href="tel:01030634710"
+                  href="tel:01033496278"
                   className="text-light-blue hover:underline"
                 >
-                  01030634710
+                  01033496278
                 </Link>
               </p>
               <p>

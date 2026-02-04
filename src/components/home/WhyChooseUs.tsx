@@ -8,21 +8,25 @@ const features = [
     title: 'Fast, SEO-Optimized Websites',
     desc: 'High-performance websites optimized for loading speed, search engine visibility, and business conversion.',
     icon: <FaSearch className="text-2xl text-orca-blue" aria-hidden="true" />,
+    href: '/services/web-development',
   },
   {
     title: 'Strong Security & Vulnerability Testing',
     desc: 'Advanced penetration testing, vulnerability assessments, and full website security hardening.',
     icon: <FaShieldAlt className="text-2xl text-orca-blue" aria-hidden="true" />,
+    href: '/services/cybersecurity',
   },
   {
     title: 'Custom Back-End Systems',
     desc: 'Scalable, secure, and reliable backend development for business applications and high-traffic platforms.',
     icon: <FaServer className="text-2xl text-orca-blue" aria-hidden="true" />,
+    href: '/services/backend',
   },
   {
     title: 'Professional UI/UX Experience',
     desc: 'Modern user interfaces designed for smooth interaction, accessibility, and enhanced business engagement.',
     icon: <FaPaintBrush className="text-2xl text-orca-blue" aria-hidden="true" />,
+    href: '/services/web-development',
   },
 ];
 
@@ -73,7 +77,7 @@ export default function WhyChooseUs() {
 
               {/* Small SEO internal link */}
               <a
-                href="/services"
+                href={feature.href}
                 className="text-orca-blue underline text-sm mt-3 inline-block"
               >
                 Learn more →

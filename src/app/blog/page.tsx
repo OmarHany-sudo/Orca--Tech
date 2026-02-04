@@ -2,36 +2,12 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-
-const posts = [
-  {
-    title: 'Top 10 Cybersecurity Tips to Protect Your Website',
-    slug: 'website-cybersecurity-tips',
-    desc: 'Learn essential security practices used by cybersecurity experts to keep websites safe from attacks.',
-  },
-  {
-    title: 'How Hackers Attack Websites (Explained Simply)',
-    slug: 'how-hackers-attack-websites',
-    desc: 'A simplified explanation of real-world hacking techniques and how to defend your website against them.',
-  },
-  {
-    title: 'Why Backend Architecture Matters for Your Business',
-    slug: 'importance-of-backend',
-    desc: 'Discover how backend systems impact performance, scalability, security, and user experience.',
-  },
-  {
-    title: 'The Importance of Web Performance Optimization',
-    slug: 'web-performance-optimization',
-    desc: 'Understand why website speed, caching, optimization, and performance tuning directly affect conversions and SEO.',
-  },
-  {
-    title: 'What Is Penetration Testing? A Complete Beginner’s Guide',
-    slug: 'penetration-testing-guide',
-    desc: 'A beginner-friendly explanation of penetration testing, methodology, tools, and why every business needs it.',
-  },
-];
+import { getArticlesByLanguage } from '@/lib/articles';
 
 export default function BlogPage() {
+  // Get English articles for the main blog page
+  const articles = getArticlesByLanguage('en');
+
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -41,34 +17,84 @@ export default function BlogPage() {
             OrcaTech Blog
           </h1>
           <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-            Tutorials, insights, and guides on cybersecurity, web development, and backend systems.
+            Tutorials, insights, and guides on cybersecurity, web development, backend systems, and business strategy.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-          {posts.map((post, index) => (
+          {articles.map((article, index) => (
             <motion.div
-              key={post.slug}
+              key={article.slug}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-soft-grey p-6 rounded-xl border border-gray-200"
+              className="bg-soft-grey p-6 rounded-xl border border-gray-200 hover:shadow-lg transition-shadow"
             >
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-semibold text-orca-blue uppercase">
+                  {article.category}
+                </span>
+                <span className="text-xs text-gray-500">
+                  {article.readTime} min read
+                </span>
+              </div>
+              
               <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-                {post.title}
+                {article.title}
               </h2>
-              <p className="text-gray-600 mb-4">{post.desc}</p>
+              <p className="text-gray-600 mb-4">{article.description}</p>
 
-              <Link
-                href={`/blog/${post.slug}`}
-                className="text-orca-blue font-medium underline"
-              >
-                Read More →
-              </Link>
+              <div className="flex items-center justify-between">
+                <Link
+                  href={`/blog/${article.slug}`}
+                  className="text-orca-blue font-medium hover:underline"
+                >
+                  Read More →
+                </Link>
+                <span className="text-xs text-gray-500">
+                  {new Date(article.publishedAt).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                </span>
+              </div>
             </motion.div>
           ))}
         </div>
+
+        {/* SEO Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'CollectionPage',
+              name: 'OrcaTech Blog',
+              description: 'Tutorials, insights, and guides on cybersecurity, web development, backend systems, and business strategy.',
+              url: 'https://orcatech.online/blog',
+              mainEntity: {
+                '@type': 'ItemList',
+                itemListElement: articles.map((article, index) => ({
+                  '@type': 'ListItem',
+                  position: index + 1,
+                  item: {
+                    '@type': 'BlogPosting',
+                    headline: article.title,
+                    description: article.description,
+                    url: `https://orcatech.online/blog/${article.slug}`,
+                    datePublished: article.publishedAt,
+                    author: {
+                      '@type': 'Organization',
+                      name: 'OrcaTech',
+                    },
+                  },
+                })),
+              },
+            })
+          }}
+        />
 
       </div>
     </section>

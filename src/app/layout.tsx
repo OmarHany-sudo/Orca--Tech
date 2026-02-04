@@ -71,8 +71,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Language Alternates for SEO */}
+        <link rel="alternate" hrefLang="en-US" href="https://orcatech.online/" />
+        <link rel="alternate" hrefLang="ar-EG" href="https://orcatech.online/ar/" />
+        <link rel="alternate" hrefLang="x-default" href="https://orcatech.online/" />
+
         {/* ================================
             ORGANIZATION SCHEMA
         ================================= */}
@@ -94,7 +99,7 @@ export default function RootLayout({
               contactPoint: [
                 {
                   "@type": "ContactPoint",
-                  telephone: "+201030634710",
+                  telephone: "+201033496278",
                   contactType: "customer service",
                   email: "orcatech.service@gmail.com"
                 }

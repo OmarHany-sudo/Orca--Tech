@@ -30,7 +30,19 @@ export default function ContactSection() {
 
   const onSubmit = (data: FormData) => {
     setIsSubmitting(true);
-    console.log(data); // Simulating an API request
+    
+    // Create WhatsApp message with form data
+    const message = `Hello OrcaTech,\n\nName: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone || 'Not provided'}\nProject Type: ${data.projectType}\n\nMessage:\n${data.message}`;
+    
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // WhatsApp number: 01033496278 (Egyptian number, format: +201033496278)
+    const whatsappUrl = `https://wa.me/201033496278?text=${encodedMessage}`;
+    
+    // Open WhatsApp in new tab
+    window.open(whatsappUrl, '_blank');
+    
     setTimeout(() => setIsSubmitting(false), 1000);
   };
 
@@ -61,7 +73,7 @@ export default function ContactSection() {
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'ContactPoint',
-              telephone: '+201030634710',
+              telephone: '+201033496278',
               contactType: 'customer service',
               email: 'orcatech.service@gmail.com',
               availableLanguage: ['English', 'Arabic'],
@@ -116,7 +128,7 @@ export default function ContactSection() {
                 <input
                   {...register('phone')}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orca-blue"
-                  placeholder="+20 103 063 4710"
+                  placeholder="+20 103 349 6278"
                   aria-label="Your phone number"
                 />
               </div>
@@ -159,8 +171,11 @@ export default function ContactSection() {
                 className="w-full py-4 text-lg"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? 'Opening WhatsApp...' : 'Send via WhatsApp'}
               </Button>
+              <p className="text-xs text-gray-500 text-center mt-2">
+                You'll be redirected to WhatsApp with your message pre-filled
+              </p>
             </form>
           </div>
 
@@ -184,10 +199,10 @@ export default function ContactSection() {
               <div>
                 <h4 className="font-medium">Phone</h4>
                 <a
-                  href="tel:+201030634710"
+                  href="tel:+201033496278"
                   className="text-orca-blue hover:underline"
                 >
-                  +20 103 063 4710
+                  +20 103 349 6278
                 </a>
               </div>
 

@@ -15,6 +15,8 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const [language, setLanguage] = useState<'en' | 'ar'>('en');
+
   const navLinks = [
     { name: 'Home', href: '/' },
     {
@@ -27,6 +29,7 @@ export default function Navbar() {
         { name: 'Desktop Apps', href: '/services/desktop-apps' },
       ],
     },
+    { name: 'Blog', href: '/blog' },
     { name: 'Portfolio', href: '#portfolio' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -51,7 +54,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) =>
             link.dropdown ? (
               <div key={link.name} className="relative group">
@@ -82,6 +85,30 @@ export default function Navbar() {
               </Link>
             )
           )}
+          
+          {/* Language Switcher */}
+          <div className="flex items-center border-l border-gray-300 pl-6 ml-2">
+            <button
+              onClick={() => setLanguage('en')}
+              className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+                language === 'en'
+                  ? 'bg-orca-blue text-white'
+                  : 'text-gray-700 hover:text-orca-blue'
+              }`}
+            >
+              EN
+            </button>
+            <button
+              onClick={() => setLanguage('ar')}
+              className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+                language === 'ar'
+                  ? 'bg-orca-blue text-white'
+                  : 'text-gray-700 hover:text-orca-blue'
+              }`}
+            >
+              AR
+            </button>
+          </div>
         </nav>
 
         {/* Mobile Menu Button (Always Black) */}
@@ -148,6 +175,31 @@ export default function Navbar() {
                 </Link>
               );
             })}
+            
+            {/* Mobile Language Switcher */}
+            <div className="flex items-center space-x-2 border-t border-gray-200 pt-4 mt-4">
+              <span className="text-sm font-medium text-gray-700">Language:</span>
+              <button
+                onClick={() => setLanguage('en')}
+                className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+                  language === 'en'
+                    ? 'bg-orca-blue text-white'
+                    : 'text-gray-700 hover:text-orca-blue'
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLanguage('ar')}
+                className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+                  language === 'ar'
+                    ? 'bg-orca-blue text-white'
+                    : 'text-gray-700 hover:text-orca-blue'
+                }`}
+              >
+                AR
+              </button>
+            </div>
           </div>
         </div>
       )}

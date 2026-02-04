@@ -28,6 +28,15 @@ export default function WebDevPage() {
     },
   ];
 
+  const technologies = [
+    'React & Next.js',
+    'TypeScript',
+    'Tailwind CSS',
+    'Node.js & Express',
+    'PostgreSQL & MongoDB',
+    'AWS & Cloud Services',
+  ];
+
   return (
     <div className="bg-white">
       
@@ -101,13 +110,87 @@ export default function WebDevPage() {
         </div>
       </section>
 
-      {/* 🔥 CTA SECTION */}
-      <section className="py-16 bg-soft-grey text-center">
+      {/* 🔥 TECHNOLOGY STACK */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+            Modern Technology Stack
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+            {technologies.map((tech, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                viewport={{ once: true }}
+                className="bg-soft-grey p-4 rounded-lg text-center border border-gray-100"
+              >
+                <p className="font-semibold text-gray-900">{tech}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 🔥 WHY CHOOSE US */}
+      <section className="py-20 bg-soft-grey">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+            Why Choose OrcaTech for Web Development?
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="bg-white p-6 rounded-lg border border-gray-100"
+            >
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Expert Team</h3>
+              <p className="text-gray-600">Our developers have 5+ years of experience building scalable, secure web applications for startups and enterprises.</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="bg-white p-6 rounded-lg border border-gray-100"
+            >
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Agile Process</h3>
+              <p className="text-gray-600">We follow agile methodology with weekly updates, transparent communication, and iterative improvements.</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="bg-white p-6 rounded-lg border border-gray-100"
+            >
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Security First</h3>
+              <p className="text-gray-600">Every project includes security audits, SSL certificates, secure authentication, and regular vulnerability assessments.</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="bg-white p-6 rounded-lg border border-gray-100"
+            >
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Post-Launch Support</h3>
+              <p className="text-gray-600">We provide ongoing maintenance, updates, performance monitoring, and technical support after launch.</p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 🔥 CTA SECTION */}
+      <section className="py-16 bg-orca-blue text-white text-center">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-6">
             Ready to Build Your Next Website?
           </h2>
-          <p className="text-gray-700 max-w-2xl mx-auto mb-6">
+          <p className="text-white/90 max-w-2xl mx-auto mb-6">
             Contact OrcaTech today for a free consultation and see how we can bring 
             your website or platform idea to life with clean code, secure architecture, 
             and modern UI/UX design.
@@ -119,11 +202,43 @@ export default function WebDevPage() {
                 behavior: 'smooth',
               })
             }
+            className="bg-white text-orca-blue hover:bg-gray-100"
           >
             Get a Free Consultation
           </Button>
         </div>
       </section>
+
+      {/* 🔥 BREADCRUMB SCHEMA */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://orcatech.online',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Services',
+                item: 'https://orcatech.online#services',
+              },
+              {
+                '@type': 'ListItem',
+                position: 3,
+                name: 'Web Development',
+                item: 'https://orcatech.online/services/web-development',
+              },
+            ],
+          }),
+        }}
+      />
 
       {/* 🔥 SCHEMA MARKUP FOR SEO */}
       <script
@@ -136,12 +251,17 @@ export default function WebDevPage() {
             provider: {
               '@type': 'Organization',
               name: 'OrcaTech',
-              url: 'https://orcatech.netlify.app',
+              url: 'https://orcatech.online',
             },
             description:
               'Professional web development service including responsive design, UI/UX, backend development, SEO optimization and performance tuning.',
             serviceType: 'Web Development',
-            areaServed: ['Egypt', 'Middle East'],
+            areaServed: ['Egypt', 'Middle East', 'Worldwide'],
+            offers: {
+              '@type': 'Offer',
+              priceCurrency: 'USD',
+              price: 'Contact for quote',
+            },
           }),
         }}
       />
