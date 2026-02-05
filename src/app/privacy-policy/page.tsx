@@ -1,18 +1,42 @@
-Privacy Policy – OrcaTech
+export default function PrivacyPolicyPage() {
+  return (
+    <main style={{ maxWidth: "800px", margin: "40px auto", padding: "20px" }}>
+      <h1>Privacy Policy – OrcaTech</h1>
 
-At OrcaTech, we respect your privacy and are committed to protecting your personal data.
+      <p>
+        At OrcaTech, we respect your privacy and are committed to protecting your
+        personal data.
+      </p>
 
-We collect the following information when you submit our forms:
-- Name
-- Email address
-- Phone number
+      <h2>Information We Collect</h2>
+      <ul>
+        <li>Name</li>
+        <li>Email address</li>
+        <li>Phone number</li>
+      </ul>
 
-This information is used only to:
-- Contact you regarding your request
-- Provide our services and consultations
+      <h2>How We Use Your Information</h2>
+      <p>
+        We use your information only to contact you regarding your request and
+        to provide our services and consultations.
+      </p>
 
-We do NOT share, sell, or rent your data to any third party.
+      <h2>Data Sharing</h2>
+      <p>
+        We do not share, sell, or rent your personal data to any third party.
+      </p>
 
-By submitting your information, you agree to this Privacy Policy.
+      <h2>Your Consent</h2>
+      <p>
+        By submitting your information through our forms, you agree to this
+        Privacy Policy.
+      </p>
 
-If you have any questions, you can contact us through our official channels.
+      <h2>Contact</h2>
+      <p>
+        If you have any questions about this Privacy Policy, you can contact us
+        through our official channels.
+      </p>
+    </main>
+  );
+}
