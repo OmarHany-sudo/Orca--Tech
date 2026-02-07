@@ -13,7 +13,7 @@ export default function Dashboard() {
   const login = async () => {
     try {
       const res = await fetch(
-        `/.netlify/functions/articles?lang=en`,
+        `/.netlify/edge-functions/articles?lang=en`,
         {
           method: "GET",
           headers: {
@@ -37,7 +37,7 @@ export default function Dashboard() {
   /* ================= LOAD ARTICLES ================= */
   const loadArticles = async () => {
     const res = await fetch(
-      `/.netlify/functions/articles?lang=${lang}`,
+      `/.netlify/edge-functions/articles?lang=${lang}`,
       {
         method: "GET",
         headers: {
