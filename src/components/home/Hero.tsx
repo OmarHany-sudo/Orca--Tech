@@ -8,7 +8,7 @@ export default function Hero() {
     <section
       id="hero"
       className="relative min-h-screen flex items-center bg-gradient-to-br from-orca-blue to-black overflow-hidden"
-      aria-label="OrcaTech Web Development and Cybersecurity Services"
+      aria-label="OrcaTech Web Development and Cybersecurity Company in Egypt and Saudi Arabia"
     >
       <div className="absolute inset-0 circuit-bg opacity-10"></div>
 
@@ -25,18 +25,18 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
           className="md:w-1/2 mb-12 md:mb-0 z-10"
         >
-
-          {/* 🔥 H2 SEO — مهم جدًا */}
+          {/* 🔥 MAIN SEO H1 */}
           <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
-  OrcaTech – Professional Web Development & Cybersecurity Solutions
-</h1>
+            OrcaTech – Web Development & Cybersecurity Company in Egypt & Saudi Arabia
+          </h1>
 
           {/* 🔥 SEO PARAGRAPH */}
           <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-            OrcaTech builds fast, secure, SEO-optimized business websites with modern
-            frontend and backend systems. Our cybersecurity team provides vulnerability
-            scanning, penetration testing, and full website hardening to protect your
-            digital presence from threats.
+            OrcaTech is a professional web development and cybersecurity company
+            serving businesses in Egypt, Saudi Arabia, and worldwide. We build
+            fast, secure, SEO-optimized websites with modern frontend and backend
+            systems, and provide vulnerability scanning, penetration testing, and
+            full website hardening to protect your digital presence.
           </p>
 
           {/* CTA BUTTONS */}
@@ -48,7 +48,7 @@ export default function Hero() {
             >
               <Button
                 variant="primary"
-                aria-label="Request a website or cybersecurity service quote"
+                aria-label="Request a website or cybersecurity service quote from OrcaTech"
                 onClick={() =>
                   document
                     .getElementById('contact')
@@ -66,7 +66,7 @@ export default function Hero() {
             >
               <Button
                 variant="outline"
-                aria-label="View our web development and cybersecurity services"
+                aria-label="Explore OrcaTech web development and cybersecurity services"
                 onClick={() =>
                   document
                     .getElementById('services')
@@ -86,7 +86,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="md:w-1/2 flex justify-center relative z-10"
         >
-          <div className="relative" aria-label="OrcaTech code illustration">
+          <div className="relative" aria-label="OrcaTech secure software code illustration">
             <div className="w-80 h-60 bg-gray-800 rounded-xl shadow-2xl overflow-hidden border-2 border-orca-blue relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orca-blue/10 to-transparent"></div>
 
