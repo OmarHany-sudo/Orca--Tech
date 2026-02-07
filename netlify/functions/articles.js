@@ -1,7 +1,10 @@
 import { getStore } from "@netlify/blobs";
 import crypto from "crypto";
 
-const store = getStore("articles");
+const store = getStore("articles", {
+  siteID: process.env.NETLIFY_SITE_ID,
+  token: process.env.NETLIFY_AUTH_TOKEN,
+});
 
 export async function handler(event) {
   const headers = event.headers || {};
