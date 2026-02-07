@@ -1,33 +1,42 @@
 'use client';
 
-import { useState } from 'react';
-
-const PASSWORD = "orcatech123"; // غيّرها فورًا
+import { useState, useEffect } from "react";
 
 export default function Dashboard() {
   const [auth, setAuth] = useState(false);
-  const [password, setPassword] = useState('');
-  const [form, setForm] = useState({
+  const [password, setPassword] = useState("");
+  const [lang, setLang] = useState<'en' | 'ar'>('en');
+  const [articles, setArticles] = useState<any[]>([]);
+  const [form, setForm] = useState<any>({
     title: '',
     slug: '',
     description: '',
     content: '',
+    align: 'left',
   });
 
+  /* ===== LOAD ===== */
+  const load = async () => {
+    const res = await fetch(`/netlify/functions/articles?lang=${lang}`, {
+      headers: { "x-dashboard-pass": password },
+    });
+    setArticles(await res.json());
+  };
+
+  /* ===== LOGIN ===== */
   if (!auth) {
     return (
       <main className="min-h-screen flex items-center justify-center">
-        <div className="p-6 border rounded-lg">
-          <h2 className="mb-4 font-bold">Dashboard Login</h2>
+        <div className="border p-6 rounded">
           <input
             type="password"
-            className="border p-2 mb-2 w-full"
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Dashboard Password"
+            className="border p-2 mb-3 w-full"
+            onChange={e => setPassword(e.target.value)}
           />
           <button
-            className="bg-black text-white px-4 py-2 w-full"
-            onClick={() => password === PASSWORD && setAuth(true)}
+            className="bg-black text-white w-full py-2"
+            onClick={() => setAuth(true)}
           >
             Login
           </button>
@@ -36,47 +45,61 @@ export default function Dashboard() {
     );
   }
 
-  const submit = async () => {
-    await fetch('/api/articles', {
-      method: 'POST',
-      body: JSON.stringify({
-        ...form,
-        publishedAt: new Date().toISOString(),
-        author: 'OrcaTech',
-        keywords: [],
-      }),
-    });
-    alert('Article Added');
-  };
+  useEffect(() => { load(); }, [lang]);
 
   return (
-    <main className="p-10 max-w-3xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6">Add New Article</h1>
+    <main
+      className={`p-10 max-w-5xl mx-auto`}
+      dir={lang === 'ar' ? 'rtl' : 'ltr'}
+    >
+      <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
 
-      <input
-        placeholder="Title"
-        className="border p-2 w-full mb-2"
-        onChange={(e) => setForm({ ...form, title: e.target.value })}
-      />
-
-      <input
-        placeholder="Slug"
-        className="border p-2 w-full mb-2"
-        onChange={(e) => setForm({ ...form, slug: e.target.value })}
-      />
+      <select onChange={e => setLang(e.target.value as any)}>
+        <option value="en">English</option>
+        <option value="ar">Arabic</option>
+      </select>
 
       <textarea
-        placeholder="HTML Content"
-        className="border p-2 w-full mb-2 h-40"
-        onChange={(e) => setForm({ ...form, content: e.target.value })}
+        className="border w-full h-40 my-4"
+        placeholder="Markdown content"
+        onChange={e => setForm({ ...form, content: e.target.value })}
       />
 
       <button
         className="bg-orca-blue text-white px-6 py-2"
-        onClick={submit}
+        onClick={async () => {
+          await fetch('/netlify/functions/articles', {
+            method: 'POST',
+            headers: { "x-dashboard-pass": password },
+            body: JSON.stringify({ ...form, language: lang }),
+          });
+          load();
+        }}
       >
         Publish
       </button>
+
+      <hr className="my-10"/>
+
+      {articles.map(a => (
+        <div key={a.id} className="border p-4 mb-4">
+          <b>{a.title}</b>
+          <p>Views: {a.views} | Leads: {a.leads}</p>
+          <button
+            className="text-red-600"
+            onClick={async () => {
+              await fetch(`/netlify/functions/articles`, {
+                method: 'DELETE',
+                headers: { "x-dashboard-pass": password },
+                body: JSON.stringify({ id: a.id, language: lang }),
+              });
+              load();
+            }}
+          >
+            Delete
+          </button>
+        </div>
+      ))}
     </main>
   );
 }
