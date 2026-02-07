@@ -1,7 +1,10 @@
+'use client';
+
 import { notFound } from 'next/navigation';
 import { getArticleBySlug } from '@/lib/articles';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
   const article = getArticleBySlug(params.slug);
@@ -30,6 +33,21 @@ export default function BlogArticle({ params }: any) {
   const article = getArticleBySlug(params.slug);
 
   if (!article) return notFound();
+
+  /* ================= VIEW TRACKING ================= */
+  useEffect(() => {
+    fetch(
+      `/netlify/functions/articles?track=view&slug=${params.slug}`,
+      { method: 'GET' }
+    );
+  }, [params.slug]);
+
+  const trackLead = () => {
+    fetch(
+      `/netlify/functions/articles?track=lead&slug=${params.slug}`,
+      { method: 'GET' }
+    );
+  };
 
   const jsonLdArticle = {
     "@context": "https://schema.org",
@@ -116,13 +134,14 @@ export default function BlogArticle({ params }: any) {
           </p>
           <Link
             href="/#contact"
+            onClick={trackLead}
             className="text-orca-blue font-semibold underline"
           >
             Talk to OrcaTech – Free Consultation
           </Link>
         </div>
 
-        {/* ================= CTA #2 (Strong Offer) ================= */}
+        {/* ================= CTA #2 ================= */}
         <div className="bg-orca-blue text-white p-8 rounded-xl text-center my-16">
           <h3 className="text-2xl font-bold mb-3">
             Need a Professional Website or Secure System?
@@ -132,6 +151,7 @@ export default function BlogArticle({ params }: any) {
           </p>
           <Link
             href="/#contact"
+            onClick={trackLead}
             className="inline-block bg-white text-orca-blue px-6 py-3 rounded-lg font-semibold"
           >
             Get Free Consultation
@@ -148,6 +168,7 @@ export default function BlogArticle({ params }: any) {
           </p>
           <Link
             href="/#contact"
+            onClick={trackLead}
             className="inline-block bg-orca-blue px-7 py-3 rounded-lg font-semibold"
           >
             Request Free Consultation
