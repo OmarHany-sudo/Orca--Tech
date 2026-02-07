@@ -2,16 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const pathname = usePathname();
-  const router = useRouter();
-
-  /* ================= Scroll Effect ================= */
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -20,39 +15,10 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  /* ================= Language Logic ================= */
-  const isArabic = pathname.startsWith('/ar');
-
-  // صفحات عندك ليها نسخة عربية فعلاً
-  const arabicSupportedPaths = [
-    '/',
-    '/blog',
-    '/services/web-development',
-    '/services/cybersecurity',
-    '/services/backend',
-    '/services/desktop-apps',
-  ];
-
-  const switchLanguage = (lang: 'en' | 'ar') => {
-    // من EN إلى AR
-    if (lang === 'ar' && !isArabic) {
-      // لو الصفحة الحالية ليها نسخة عربي
-      if (arabicSupportedPaths.includes(pathname)) {
-        router.push(`/ar${pathname}`);
-      } else {
-        // fallback ذكي
-        router.push('/ar');
-      }
-    }
-
-    // من AR إلى EN
-    if (lang === 'en' && isArabic) {
-      const newPath = pathname.replace('/ar', '') || '/';
-      router.push(newPath);
-    }
+  const comingSoon = () => {
+    alert('Arabic version is coming soon 🚀');
   };
 
-  /* ================= Nav Links ================= */
   const navLinks = [
     { name: 'Home', href: '/' },
     {
@@ -131,25 +97,15 @@ export default function Navbar() {
             )
           )}
 
-          {/* ===== Language Switcher (Desktop) ===== */}
-          <div className="flex items-center border-l border-gray-300 pl-6 ml-2">
-            <button
-              onClick={() => switchLanguage('en')}
-              className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-                !isArabic
-                  ? 'bg-orca-blue text-white'
-                  : 'text-gray-700 hover:text-orca-blue'
-              }`}
-            >
+          {/* ===== Language Switcher (HONEST) ===== */}
+          <div className="flex items-center border-l border-gray-300 pl-6 ml-2 gap-2">
+            <button className="px-3 py-1 rounded text-sm font-medium bg-orca-blue text-white cursor-default">
               EN
             </button>
             <button
-              onClick={() => switchLanguage('ar')}
-              className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-                isArabic
-                  ? 'bg-orca-blue text-white'
-                  : 'text-gray-700 hover:text-orca-blue'
-              }`}
+              onClick={comingSoon}
+              className="px-3 py-1 rounded text-sm font-medium text-gray-400 hover:text-orca-blue"
+              title="Arabic coming soon"
             >
               AR
             </button>
@@ -199,27 +155,16 @@ export default function Navbar() {
               );
             })}
 
-            {/* ===== Language Switcher (Mobile) ===== */}
+            {/* Language Switcher Mobile */}
             <div className="flex gap-3 pt-4 border-t">
-              <button
-                onClick={() => switchLanguage('en')}
-                className={`px-3 py-1 rounded text-sm ${
-                  !isArabic
-                    ? 'bg-orca-blue text-white'
-                    : 'text-gray-700'
-                }`}
-              >
+              <span className="px-3 py-1 rounded text-sm bg-orca-blue text-white">
                 EN
-              </button>
+              </span>
               <button
-                onClick={() => switchLanguage('ar')}
-                className={`px-3 py-1 rounded text-sm ${
-                  isArabic
-                    ? 'bg-orca-blue text-white'
-                    : 'text-gray-700'
-                }`}
+                onClick={comingSoon}
+                className="px-3 py-1 rounded text-sm text-gray-400"
               >
-                AR
+                AR (Soon)
               </button>
             </div>
           </div>
