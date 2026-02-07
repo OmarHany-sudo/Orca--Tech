@@ -6,6 +6,7 @@ import Link from 'next/link';
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [language, setLanguage] = useState<'en' | 'ar'>('en');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,8 +15,6 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const [language, setLanguage] = useState<'en' | 'ar'>('en');
 
   const navLinks = [
     { name: 'Home', href: '/' },
@@ -27,6 +26,15 @@ export default function Navbar() {
         { name: 'Cybersecurity', href: '/services/cybersecurity' },
         { name: 'Back-End', href: '/services/backend' },
         { name: 'Desktop Apps', href: '/services/desktop-apps' },
+      ],
+    },
+    {
+      name: 'Locations',
+      href: '#',
+      dropdown: [
+        { name: 'Egypt', href: '/egypt' },
+        { name: 'Saudi Arabia', href: '/saudi-arabia' },
+        { name: 'Global', href: '/global' },
       ],
     },
     { name: 'Blog', href: '/blog' },
@@ -85,7 +93,7 @@ export default function Navbar() {
               </Link>
             )
           )}
-          
+
           {/* Language Switcher */}
           <div className="flex items-center border-l border-gray-300 pl-6 ml-2">
             <button
@@ -111,34 +119,12 @@ export default function Navbar() {
           </div>
         </nav>
 
-        {/* Mobile Menu Button (Always Black) */}
+        {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-black transition-all duration-300"
+          className="md:hidden text-black"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            {mobileMenuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
+          ☰
         </button>
       </div>
 
@@ -175,31 +161,6 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            
-            {/* Mobile Language Switcher */}
-            <div className="flex items-center space-x-2 border-t border-gray-200 pt-4 mt-4">
-              <span className="text-sm font-medium text-gray-700">Language:</span>
-              <button
-                onClick={() => setLanguage('en')}
-                className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-                  language === 'en'
-                    ? 'bg-orca-blue text-white'
-                    : 'text-gray-700 hover:text-orca-blue'
-                }`}
-              >
-                EN
-              </button>
-              <button
-                onClick={() => setLanguage('ar')}
-                className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-                  language === 'ar'
-                    ? 'bg-orca-blue text-white'
-                    : 'text-gray-700 hover:text-orca-blue'
-                }`}
-              >
-                AR
-              </button>
-            </div>
           </div>
         </div>
       )}
