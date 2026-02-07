@@ -2,47 +2,75 @@ import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://orcatech.online";
-  
-  const routes = [
+  const lastModified = new Date();
+
+  /* ======================
+     CORE PAGES
+  ====================== */
+  const routes: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/`,
-      lastModified: "2026-02-03",
-      changeFrequency: "daily" as const,
+      lastModified,
+      changeFrequency: "daily",
       priority: 1.0,
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified: "2026-02-03",
-      changeFrequency: "daily" as const,
+      lastModified,
+      changeFrequency: "daily",
+      priority: 0.9,
+    },
+
+    // 🌍 Location Pages
+    {
+      url: `${baseUrl}/egypt`,
+      lastModified,
+      changeFrequency: "weekly",
       priority: 0.95,
     },
     {
+      url: `${baseUrl}/saudi-arabia`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/global`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+
+    // 🛠 Services
+    {
       url: `${baseUrl}/services/web-development`,
-      lastModified: "2026-02-03",
-      changeFrequency: "weekly" as const,
+      lastModified,
+      changeFrequency: "weekly",
       priority: 0.95,
     },
     {
       url: `${baseUrl}/services/cybersecurity`,
-      lastModified: "2026-02-03",
-      changeFrequency: "weekly" as const,
+      lastModified,
+      changeFrequency: "weekly",
       priority: 0.95,
     },
     {
       url: `${baseUrl}/services/backend`,
-      lastModified: "2026-02-03",
-      changeFrequency: "weekly" as const,
-      priority: 0.90,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/services/desktop-apps`,
-      lastModified: "2026-02-03",
-      changeFrequency: "weekly" as const,
-      priority: 0.90,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
   ];
 
-  // English blog articles (original + new SEO articles)
+  /* ======================
+     BLOG – ENGLISH
+  ====================== */
   const englishArticles = [
     "cost-of-building-business-website-2026",
     "how-to-choose-best-software-company",
@@ -59,12 +87,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "how-to-choose-reliable-programming-company",
   ].map((slug) => ({
     url: `${baseUrl}/blog/${slug}`,
-    lastModified: "2026-02-03",
+    lastModified,
     changeFrequency: "monthly" as const,
-    priority: 0.80,
+    priority: 0.8,
   }));
 
-  // Arabic blog articles
+  /* ======================
+     BLOG – ARABIC
+  ====================== */
   const arabicArticles = [
     "cost-of-building-website-2026-ar",
     "how-to-choose-reliable-programming-company-ar",
@@ -74,9 +104,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "why-businesses-need-professional-website-ar",
   ].map((slug) => ({
     url: `${baseUrl}/ar/blog/${slug}`,
-    lastModified: "2026-02-03",
+    lastModified,
     changeFrequency: "monthly" as const,
-    priority: 0.80,
+    priority: 0.8,
   }));
 
   return [...routes, ...englishArticles, ...arabicArticles];
