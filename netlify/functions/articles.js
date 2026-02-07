@@ -4,11 +4,21 @@ import crypto from "crypto";
 const store = getStore("articles");
 
 export async function handler(event) {
-  const password = event.headers["x-dashboard-pass"];
+  const headers = event.headers || {};
+const receivedPassword =
+  headers["x-dashboard-pass"] ||
+  headers["X-Dashboard-Pass"] ||
+  headers["x-dashboard-pass".toLowerCase()];
 
-  if (password !== process.env.DASHBOARD_PASSWORD) {
-    return { statusCode: 401, body: "Unauthorized" };
-  }
+if (!receivedPassword || receivedPassword !== process.env.DASHBOARD_PASSWORD) {
+  return {
+    statusCode: 401,
+    body: JSON.stringify({
+      error: "Unauthorized",
+      received: receivedPassword || null,
+    }),
+  };
+}
 
   const params = event.queryStringParameters || {};
   const lang = params.lang || "en";
