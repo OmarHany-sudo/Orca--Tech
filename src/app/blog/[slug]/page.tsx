@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { getArticleBySlug } from '@/lib/articles';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
   const article = getArticleBySlug(params.slug);
@@ -63,6 +64,7 @@ export default function BlogArticle({ params }: any) {
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4 max-w-3xl">
 
+        {/* ================= Article Header ================= */}
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <span className="text-sm font-semibold text-orca-blue uppercase">
@@ -72,11 +74,11 @@ export default function BlogArticle({ params }: any) {
               {article.readTime} min read
             </span>
           </div>
-          
+
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             {article.title}
           </h1>
-          
+
           <div className="flex items-center justify-between text-sm text-gray-600 border-t border-b border-gray-200 py-4">
             <span>By {article.author}</span>
             <span>
@@ -89,29 +91,86 @@ export default function BlogArticle({ params }: any) {
           </div>
         </div>
 
+        {/* ================= Schema ================= */}
         <>
-          {/* Article Schema */}
-          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdArticle) }} />
-
-          {/* Breadcrumb Schema */}
-          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }} />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdArticle) }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }}
+          />
         </>
 
+        {/* ================= Article Content ================= */}
         <article
           className="prose prose-lg max-w-none"
           dangerouslySetInnerHTML={{ __html: article.content }}
-        ></article>
+        />
 
-        {/* Related Articles Section */}
-        <div className="mt-16 pt-8 border-t border-gray-200">
+        {/* ================= CTA #1 (Mid Article) ================= */}
+        <div className="border-l-4 border-orca-blue bg-soft-grey p-6 my-14 rounded-lg">
+          <p className="font-medium mb-2">
+            👉 Planning a website or system for your business?
+          </p>
+          <Link
+            href="/#contact"
+            className="text-orca-blue font-semibold underline"
+          >
+            Talk to OrcaTech – Free Consultation
+          </Link>
+        </div>
+
+        {/* ================= CTA #2 (Strong Offer) ================= */}
+        <div className="bg-orca-blue text-white p-8 rounded-xl text-center my-16">
+          <h3 className="text-2xl font-bold mb-3">
+            Need a Professional Website or Secure System?
+          </h3>
+          <p className="text-sm mb-6 opacity-90">
+            OrcaTech builds fast, secure, and scalable solutions for businesses.
+          </p>
+          <Link
+            href="/#contact"
+            className="inline-block bg-white text-orca-blue px-6 py-3 rounded-lg font-semibold"
+          >
+            Get Free Consultation
+          </Link>
+        </div>
+
+        {/* ================= CTA #3 (Final Close) ================= */}
+        <div className="bg-black text-white p-8 rounded-xl text-center mt-20">
+          <h3 className="text-2xl font-bold mb-3">
+            Ready to Start Your Project?
+          </h3>
+          <p className="text-gray-300 mb-6 text-sm">
+            Free consultation – no obligation. We usually reply within 24 hours.
+          </p>
+          <Link
+            href="/#contact"
+            className="inline-block bg-orca-blue px-7 py-3 rounded-lg font-semibold"
+          >
+            Request Free Consultation
+          </Link>
+        </div>
+
+        {/* ================= Related ================= */}
+        <div className="mt-20 pt-10 border-t border-gray-200">
           <h3 className="text-2xl font-bold text-gray-900 mb-6">
             More Articles
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <a href="/blog" className="p-4 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow">
-              <h4 className="font-semibold text-gray-900 mb-2">Back to Blog</h4>
-              <p className="text-sm text-gray-600">Browse all articles and guides</p>
-            </a>
+            <Link
+              href="/blog"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow"
+            >
+              <h4 className="font-semibold text-gray-900 mb-2">
+                Back to Blog
+              </h4>
+              <p className="text-sm text-gray-600">
+                Browse all articles and guides
+              </p>
+            </Link>
           </div>
         </div>
 
