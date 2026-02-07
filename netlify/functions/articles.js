@@ -3,7 +3,7 @@ import crypto from "crypto";
 
 const store = getStore("articles", {
   siteID: process.env.NETLIFY_SITE_ID,
-  token: process.env.NETLIFY_AUTH_TOKEN,
+  token: process.env.NETLIFY_BLOBS_TOKEN,
 });
 
 export async function handler(event) {
