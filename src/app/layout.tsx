@@ -7,24 +7,26 @@ import Footer from "@/components/layout/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "OrcaTech | Web Development & Cybersecurity Services",
+  title: {
+    default: "OrcaTech | Software & Cybersecurity Company",
+    template: "%s | OrcaTech",
+  },
   description:
-    "OrcaTech provides professional web development, backend systems, penetration testing, and advanced cybersecurity services tailored for businesses.",
+    "OrcaTech is a professional software, web development, and cybersecurity company serving businesses in Egypt, Saudi Arabia, and worldwide.",
   keywords: [
     "OrcaTech",
+    "Software company",
     "Web development company",
     "Cybersecurity services",
+    "Penetration testing",
     "Pentesting Egypt",
-    "Website development",
+    "Web development Egypt",
+    "Cybersecurity Saudi Arabia",
     "Backend development",
     "Security audit",
     "Ethical hacking",
     "Vulnerability scanning",
-    "Cybersecurity Egypt",
-    "Web design Egypt",
-    "WordPress security",
-    "Pentesting services",
-    "Secure web apps"
+    "Secure web applications",
   ],
   robots: "index, follow",
 
@@ -33,9 +35,9 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "OrcaTech | Web Development & Cybersecurity",
+    title: "OrcaTech | Software & Cybersecurity Company",
     description:
-      "Professional web development, web security, vulnerability scanning, penetration testing, and backend systems.",
+      "Professional web development, backend systems, and cybersecurity services for businesses in Egypt, Saudi Arabia, and worldwide.",
     url: "https://orcatech.online/",
     siteName: "OrcaTech",
     images: [
@@ -43,7 +45,7 @@ export const metadata: Metadata = {
         url: "https://orcatech.online/og-image.png",
         width: 1200,
         height: 630,
-        alt: "OrcaTech Services Overview",
+        alt: "OrcaTech Software & Cybersecurity Services",
       },
     ],
     locale: "en_US",
@@ -52,9 +54,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "OrcaTech | Web Development & Cybersecurity",
+    title: "OrcaTech | Software & Cybersecurity Company",
     description:
-      "Web development, backend systems, penetration testing, and full cybersecurity services.",
+      "Web development, backend systems, penetration testing, and cybersecurity services.",
     images: ["https://orcatech.online/og-image.png"],
   },
 
@@ -73,7 +75,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Language Alternates for SEO */}
+        {/* Language Alternates */}
         <link rel="alternate" hrefLang="en-US" href="https://orcatech.online/" />
         <link rel="alternate" hrefLang="ar-EG" href="https://orcatech.online/ar/" />
         <link rel="alternate" hrefLang="x-default" href="https://orcatech.online/" />
@@ -91,25 +93,31 @@ export default function RootLayout({
               url: "https://orcatech.online",
               logo: "https://orcatech.online/og-image.png",
               description:
-                "Web development, backend development, penetration testing, and cybersecurity services.",
+                "OrcaTech is a professional web development and cybersecurity company serving businesses in Egypt, Saudi Arabia, and worldwide.",
+              areaServed: [
+                { "@type": "Country", name: "Egypt" },
+                { "@type": "Country", name: "Saudi Arabia" },
+                { "@type": "Place", name: "Worldwide" },
+              ],
               sameAs: [
                 "https://www.facebook.com/profile.php?id=61583719363965",
-                "https://github.com/OmarHany-sudo"
+                "https://github.com/OmarHany-sudo",
               ],
               contactPoint: [
                 {
                   "@type": "ContactPoint",
                   telephone: "+201033496278",
                   contactType: "customer service",
-                  email: "orcatech.service@gmail.com"
-                }
-              ]
-            })
+                  email: "orcatech.service@gmail.com",
+                  availableLanguage: ["English", "Arabic"],
+                },
+              ],
+            }),
           }}
         />
 
         {/* ================================
-            WEBSITE + SEARCH ACTION
+            WEBSITE + SEARCH ACTION SCHEMA
         ================================= */}
         <script
           type="application/ld+json"
@@ -125,7 +133,7 @@ export default function RootLayout({
                   "https://orcatech.online/search?q={search_term_string}",
                 "query-input": "required name=search_term_string",
               },
-            })
+            }),
           }}
         />
       </head>
