@@ -103,4 +103,12 @@ export default function Dashboard() {
           key={a.id}
           className="border p-4 mb-4 rounded-lg"
         >
-          <h3 className="font-bold">{a.title
+          <h3 className="font-bold">{a.title}</h3>
+          <p className="text-sm text-gray-600">
+            Views: {a.views} | Leads: {a.leads}
+          </p>
+        </div>
+      ))}
+    </main>
+  );
+}
