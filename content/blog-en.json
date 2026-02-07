@@ -1,0 +1,11 @@
+[
+  {
+    "slug": "example-article",
+    "title": "Example Article",
+    "description": "Short SEO description",
+    "keywords": ["web development", "security"],
+    "content": "<p>Article HTML content here</p>",
+    "publishedAt": "2026-02-07",
+    "author": "OrcaTech"
+  }
+]
