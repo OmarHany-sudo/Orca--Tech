@@ -15,14 +15,14 @@
     "gsap": "^3.12.5",
     "react-hook-form": "^7.52.0",
     "react-icons": "^4.12.0",
-    "class-variance-authority": "^0.7.0"
+    "class-variance-authority": "^0.7.0",
+    "@netlify/blobs": "^6.4.0"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.14",
     "postcss": "^8.4.49",
     "autoprefixer": "^10.4.20",
     "typescript": "^5.4.0",
-
     "@types/react": "^18.2.37",
     "@types/node": "^20.10.0"
   }
