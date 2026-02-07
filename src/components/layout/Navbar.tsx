@@ -2,12 +2,16 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [language, setLanguage] = useState<'en' | 'ar'>('en');
 
+  const pathname = usePathname();
+  const router = useRouter();
+
+  /* ================= Scroll Effect ================= */
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -16,6 +20,39 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  /* ================= Language Logic ================= */
+  const isArabic = pathname.startsWith('/ar');
+
+  // صفحات عندك ليها نسخة عربية فعلاً
+  const arabicSupportedPaths = [
+    '/',
+    '/blog',
+    '/services/web-development',
+    '/services/cybersecurity',
+    '/services/backend',
+    '/services/desktop-apps',
+  ];
+
+  const switchLanguage = (lang: 'en' | 'ar') => {
+    // من EN إلى AR
+    if (lang === 'ar' && !isArabic) {
+      // لو الصفحة الحالية ليها نسخة عربي
+      if (arabicSupportedPaths.includes(pathname)) {
+        router.push(`/ar${pathname}`);
+      } else {
+        // fallback ذكي
+        router.push('/ar');
+      }
+    }
+
+    // من AR إلى EN
+    if (lang === 'en' && isArabic) {
+      const newPath = pathname.replace('/ar', '') || '/';
+      router.push(newPath);
+    }
+  };
+
+  /* ================= Nav Links ================= */
   const navLinks = [
     { name: 'Home', href: '/' },
     {
@@ -61,7 +98,7 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Desktop Nav */}
+        {/* ================= Desktop Nav ================= */}
         <nav className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) =>
             link.dropdown ? (
@@ -94,12 +131,12 @@ export default function Navbar() {
             )
           )}
 
-          {/* Language Switcher */}
+          {/* ===== Language Switcher (Desktop) ===== */}
           <div className="flex items-center border-l border-gray-300 pl-6 ml-2">
             <button
-              onClick={() => setLanguage('en')}
+              onClick={() => switchLanguage('en')}
               className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-                language === 'en'
+                !isArabic
                   ? 'bg-orca-blue text-white'
                   : 'text-gray-700 hover:text-orca-blue'
               }`}
@@ -107,9 +144,9 @@ export default function Navbar() {
               EN
             </button>
             <button
-              onClick={() => setLanguage('ar')}
+              onClick={() => switchLanguage('ar')}
               className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-                language === 'ar'
+                isArabic
                   ? 'bg-orca-blue text-white'
                   : 'text-gray-700 hover:text-orca-blue'
               }`}
@@ -119,7 +156,7 @@ export default function Navbar() {
           </div>
         </nav>
 
-        {/* Mobile Menu Button */}
+        {/* ================= Mobile Button ================= */}
         <button
           className="md:hidden text-black"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -128,7 +165,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* ================= Mobile Menu ================= */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-white shadow-lg">
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
@@ -161,6 +198,30 @@ export default function Navbar() {
                 </Link>
               );
             })}
+
+            {/* ===== Language Switcher (Mobile) ===== */}
+            <div className="flex gap-3 pt-4 border-t">
+              <button
+                onClick={() => switchLanguage('en')}
+                className={`px-3 py-1 rounded text-sm ${
+                  !isArabic
+                    ? 'bg-orca-blue text-white'
+                    : 'text-gray-700'
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => switchLanguage('ar')}
+                className={`px-3 py-1 rounded text-sm ${
+                  isArabic
+                    ? 'bg-orca-blue text-white'
+                    : 'text-gray-700'
+                }`}
+              >
+                AR
+              </button>
+            </div>
           </div>
         </div>
       )}
